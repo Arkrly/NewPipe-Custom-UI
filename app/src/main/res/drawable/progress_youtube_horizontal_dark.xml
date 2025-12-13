@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Modern Progress Bar with Neon Blue accent -->
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@android:id/background">
         <shape>
-            <solid android:color="@color/dark_ripple_color" />
+            <solid android:color="@color/border_color" />
+            <corners android:radius="@dimen/radius_xs" />
         </shape>
+    </item>
+    <item android:id="@android:id/secondaryProgress">
+        <clip>
+            <shape>
+                <solid android:color="@color/surface_elevated" />
+                <corners android:radius="@dimen/radius_xs" />
+            </shape>
+        </clip>
     </item>
     <item android:id="@android:id/progress">
         <clip>
             <shape>
-                <solid android:color="@color/dark_youtube_primary_color" />
+                <solid android:color="@color/neon_blue" />
+                <corners android:radius="@dimen/radius_xs" />
             </shape>
         </clip>
     </item>

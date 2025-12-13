@@ -1,36 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Modern Search Toolbar with Glass Input -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
-    tools:background="?attr/colorPrimary">
+    android:paddingVertical="@dimen/spacing_sm">
 
-    <org.schabi.newpipe.views.NewPipeEditText
-        android:id="@+id/toolbar_search_edit_text"
+    <!-- Search Input Container with Glass Background -->
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center_vertical"
-        android:layout_marginTop="4dp"
-        android:layout_marginRight="48dp"
-        android:layout_marginBottom="4dp"
-        android:background="@null"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:hint="@string/search"
-        android:textColor="?attr/toolbarSearchColor"
-        android:imeOptions="actionSearch|flagNoFullscreen"
-        android:inputType="textFilter|textNoSuggestions"
-        android:maxLines="1"
-        android:nextFocusDown="@+id/suggestions_list"
-        android:theme="@style/ToolbarSearchInputTheme"
-        tools:ignore="RtlHardcoded" />
+        android:layout_marginEnd="@dimen/spacing_md"
+        android:background="@drawable/bg_glass_input">
 
+        <org.schabi.newpipe.views.NewPipeEditText
+            android:id="@+id/toolbar_search_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="40dp"
+            android:background="@null"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:hint="@string/search"
+            android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_tertiary"
+            android:imeOptions="actionSearch|flagNoFullscreen"
+            android:inputType="textFilter|textNoSuggestions"
+            android:maxLines="1"
+            android:nextFocusDown="@+id/suggestions_list"
+            android:paddingStart="0dp"
+            android:fontFamily="sans-serif"
+            tools:ignore="RtlHardcoded,RtlSymmetry" />
+
+    </FrameLayout>
+
+    <!-- Clear Button -->
     <FrameLayout
         android:id="@+id/toolbar_search_clear"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_gravity="right|center_vertical"
+        android:layout_gravity="end|center_vertical"
         android:contentDescription="@string/clear"
         android:focusable="true"
         tools:ignore="RtlHardcoded">
@@ -43,14 +54,15 @@
 
         <ImageView
             android:id="@+id/toolbar_search_clear_icon"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_gravity="center"
             android:contentDescription="@string/search"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_close"
-            app:tint="?attr/toolbarSearchColor"
+            app:tint="@color/text_secondary"
             tools:ignore="RtlHardcoded" />
+
     </FrameLayout>
 
 </FrameLayout>

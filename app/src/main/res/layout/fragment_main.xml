@@ -1,19 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Main Fragment with Modern Tab Layout -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/window_background">
 
-
+    <!-- Tab Layout with Glass Effect -->
     <org.schabi.newpipe.views.ScrollableTabLayout
         android:id="@+id/main_tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:background="?attr/colorPrimary"
-        app:tabRippleColor="@color/white"
-        app:tabIconTint="@color/white"
-        app:tabIndicatorColor="@color/white"
+        android:background="@drawable/bg_nav_glass"
+        android:elevation="@dimen/elevation_sm"
+        app:tabRippleColor="@color/light_ripple_color"
+        app:tabIconTint="@color/text_secondary"
+        app:tabIndicatorColor="@color/neon_blue"
+        app:tabIndicatorHeight="3dp"
+        app:tabIndicatorFullWidth="false"
+        app:tabSelectedTextColor="@color/text_primary"
+        app:tabTextColor="@color/text_secondary"
         app:tabGravity="fill"
         app:tabMinWidth="60dp" />
 

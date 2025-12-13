@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Glass Input Field Background - Focused State
+     Deep dark input with neon blue accent border on focus -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!-- Very dark input background -->
+    <solid android:color="@color/input_background" />
+
+    <!-- Fully rounded corners for pill-shaped inputs -->
+    <corners android:radius="@dimen/radius_xl" />
+
+    <!-- Neon blue border for active focus state -->
+    <stroke
+        android:width="2dp"
+        android:color="@color/neon_blue" />
+
+    <!-- Inner padding -->
+    <padding
+        android:left="@dimen/spacing_md"
+        android:top="@dimen/spacing_sm"
+        android:right="@dimen/spacing_md"
+        android:bottom="@dimen/spacing_sm" />
+
+</shape>

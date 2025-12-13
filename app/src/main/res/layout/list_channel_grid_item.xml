@@ -1,62 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Channel Grid Item - Modern Style -->
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/itemRoot"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?attr/selectableItemBackground"
+    android:layout_margin="@dimen/spacing_xs"
     android:clickable="true"
     android:focusable="true"
-    android:minWidth="@dimen/channel_item_grid_min_width"
-    android:padding="@dimen/channel_item_grid_padding">
+    app:cardBackgroundColor="@color/surface_color"
+    app:cardCornerRadius="@dimen/radius_lg"
+    app:cardElevation="@dimen/elevation_none"
+    app:strokeColor="@color/border_color"
+    app:strokeWidth="@dimen/glass_border_width"
+    app:rippleColor="@color/light_ripple_color">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/itemThumbnailView"
-        android:layout_width="@dimen/channel_item_grid_thumbnail_image_size"
-        android:layout_height="@dimen/channel_item_grid_thumbnail_image_size"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="2dp"
-        android:contentDescription="@string/detail_uploader_thumbnail_view_description"
-        android:src="@drawable/placeholder_person"
-        app:shapeAppearance="@style/CircularImageView"
-        tools:ignore="RtlHardcoded" />
-
-    <TextView
-        android:id="@+id/itemTitleView"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/itemThumbnailView"
-        android:layout_centerHorizontal="true"
-        android:ellipsize="end"
-        android:lines="1"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="@dimen/video_item_search_title_text_size"
-        tools:ignore="RtlHardcoded"
-        tools:text="Channel Title, Lorem ipsum" />
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_md">
 
-    <TextView
-        android:id="@+id/itemAdditionalDetails"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/itemTitleView"
-        android:layout_centerHorizontal="true"
-        android:lines="1"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textSize="@dimen/video_item_search_upload_date_text_size"
-        tools:ignore="RtlHardcoded"
-        tools:text="10M subscribers • 100 videos" />
+        <!-- Circular Avatar -->
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/itemThumbnailView"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:contentDescription="@string/detail_uploader_thumbnail_view_description"
+            android:src="@drawable/placeholder_person"
+            app:shapeAppearance="@style/ShapeAppearance.NewPipe.Avatar" />
 
-    <TextView
-        android:id="@+id/itemChannelDescriptionView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/itemAdditionalDetails"
-        android:layout_centerHorizontal="true"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textSize="@dimen/video_item_search_upload_date_text_size"
-        android:gravity="center"
-        tools:ignore="RtlHardcoded"
-        tools:text="@tools:sample/lorem/random" />
+        <!-- Channel Name -->
+        <TextView
+            android:id="@+id/itemTitleView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_sm"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:lines="1"
+            android:textColor="@color/text_primary"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif-medium"
+            tools:text="Channel Name" />
 
-</RelativeLayout>
+        <!-- Subscriber Count -->
+        <TextView
+            android:id="@+id/itemAdditionalDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:gravity="center"
+            android:lines="1"
+            android:textColor="@color/text_secondary"
+            android:textSize="11sp"
+            tools:text="10M subscribers" />
+
+        <!-- Description -->
+        <TextView
+            android:id="@+id/itemChannelDescriptionView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_xs"
+            android:gravity="center"
+            android:maxLines="2"
+            android:textColor="@color/text_tertiary"
+            android:textSize="11sp"
+            tools:text="@tools:sample/lorem/random" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

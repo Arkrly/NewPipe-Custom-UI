@@ -1,21 +1,141 @@
-.gradle/
-local.properties
-.DS_Store
+# ============================================
+# Build outputs
+# ============================================
 build/
-captures/
-.idea/
-*.iml
-*~
-.weblate
-.kotlin
-*.class
+.gradle/
+app/build/
 app/debug/
 app/release/
+buildSrc/build/
 
-# vscode / eclipse files
+# ============================================
+# IDE files - Android Studio / IntelliJ
+# ============================================
+.idea/
+*.iml
+*.ipr
+*.iws
+.idea_modules/
+atlassian-ide-plugin.xml
+out/
+gen/
+
+# ============================================
+# IDE files - VS Code / Eclipse
+# ============================================
+.vscode/
 *.classpath
 *.project
 *.settings
-bin/
-.vscode/
 *.code-workspace
+bin/
+
+# ============================================
+# Local configuration
+# ============================================
+local.properties
+keystore.properties
+*.keystore
+*.jks
+!debug.keystore
+
+# ============================================
+# Gradle
+# ============================================
+.gradle/
+gradle-app.setting
+!gradle-wrapper.jar
+.gradletasknamecache
+
+# ============================================
+# Android Studio
+# ============================================
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+*.ap_
+*.dex
+
+# ============================================
+# Proguard / R8
+# ============================================
+proguard/
+
+# ============================================
+# Log files
+# ============================================
+*.log
+
+# ============================================
+# OS generated files
+# ============================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ============================================
+# Kotlin
+# ============================================
+.kotlin/
+*.kotlin_module
+
+# ============================================
+# Java
+# ============================================
+*.class
+*.jar
+!libs/*.jar
+
+# ============================================
+# Testing
+# ============================================
+.test/
+test-results/
+test-output/
+
+# ============================================
+# Signing
+# ============================================
+signing/
+keystore/
+*.p12
+*.pem
+*.cer
+
+# ============================================
+# Misc
+# ============================================
+*~
+*.swp
+*.swo
+*.bak
+*.tmp
+*.temp
+.weblate
+build_error.txt
+
+# ============================================
+# NDK
+# ============================================
+obj/
+.externalNativeBuild/
+
+# ============================================
+# Crashlytics / Firebase
+# ============================================
+crashlytics.properties
+crashlytics-build.properties
+fabric.properties
+google-services.json
+
+# ============================================
+# Gemini/Claude AI artifacts (optional)
+# ============================================
+.agent/

@@ -1,88 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Error Panel - Modern Style -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="@dimen/spacing_lg">
 
+    <!-- Error Message -->
     <org.schabi.newpipe.views.NewPipeTextView
         android:id="@+id/error_message_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/general_error"
+        android:textColor="@color/text_primary"
         android:textSize="16sp"
-        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium"
         tools:text="Account terminated" />
 
+    <!-- Service Info -->
     <org.schabi.newpipe.views.NewPipeTextView
         android:id="@+id/error_message_service_info_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="@dimen/spacing_sm"
         android:gravity="center"
         android:text="@string/general_error"
-        android:textSize="16sp"
+        android:textColor="@color/text_secondary"
+        android:textSize="14sp"
         android:visibility="gone"
         tools:text="YouTube provides this reason:"
         tools:visibility="visible" />
 
+    <!-- Service Explanation -->
     <org.schabi.newpipe.views.NewPipeTextView
         android:id="@+id/error_message_service_explanation_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="@dimen/spacing_xs"
         android:gravity="center"
         android:text="@string/general_error"
-        android:textSize="16sp"
+        android:textColor="@color/text_tertiary"
+        android:textSize="14sp"
         android:textStyle="italic"
         android:visibility="gone"
-        tools:text="This account has been terminated because we received multiple third-party claims of copyright infringement regarding material that the user posted."
+        tools:text="This account has been terminated..."
         tools:visibility="visible" />
 
-
-    <Button
+    <!-- Action Button (Accent) -->
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/error_action_button"
+        style="@style/Widget.NewPipe.Button.Accent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/spacing_md"
         android:text="@string/error_snackbar_action"
-        android:textAlignment="center"
         android:textAllCaps="true"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="16sp"
-        android:theme="@style/ServiceColoredButton"
         android:visibility="gone"
         tools:visibility="visible" />
 
-    <Button
+    <!-- Retry Button (Glass) -->
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/error_retry_button"
+        style="@style/Widget.NewPipe.Button.Glass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="@dimen/spacing_sm"
         android:text="@string/retry"
-        android:textAlignment="center"
         android:textAllCaps="true"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="16sp"
-        android:theme="@style/ServiceColoredButton"
         android:visibility="gone"
         tools:visibility="visible" />
 
-    <Button
+    <!-- Open in Browser Button (Glass) -->
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/error_open_in_browser"
+        style="@style/Widget.NewPipe.Button.Glass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="@dimen/spacing_xs"
         android:text="@string/open_in_browser"
-        android:textAlignment="center"
         android:textAllCaps="true"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="16sp"
-        android:theme="@style/ServiceColoredButton"
         android:visibility="gone"
         tools:visibility="visible" />
 

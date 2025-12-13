@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
+<!-- Player Controls Top Background - Glassmorphism Gradient
+     Dark slate gradient from top for player title/controls overlay -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!-- Gradient from deep slate (top) to transparent (bottom) -->
     <gradient
         android:angle="-90"
-        android:endColor="#00000000"
-        android:startColor="@color/video_overlay_color" />
+        android:startColor="#E60d1117"
+        android:centerColor="#990d1117"
+        android:endColor="#000d1117"
+        android:type="linear" />
+
 </shape>

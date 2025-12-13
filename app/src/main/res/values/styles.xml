@@ -155,4 +155,196 @@
 
     <style name="RouterActivityThemeDark" parent="Base.RouterActivityThemeDark" />
 
+    <!-- ============================================ -->
+    <!-- Typography System - Material 3              -->
+    <!-- ============================================ -->
+
+    <!-- Base Text Appearance -->
+    <style name="TextAppearance.NewPipe" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <!-- Display Styles -->
+    <style name="TextAppearance.NewPipe.DisplayLarge">
+        <item name="android:textSize">57sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:letterSpacing">-0.01</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <style name="TextAppearance.NewPipe.DisplayMedium">
+        <item name="android:textSize">45sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <!-- Headline Styles -->
+    <style name="TextAppearance.NewPipe.HeadlineLarge">
+        <item name="android:textSize">32sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <style name="TextAppearance.NewPipe.HeadlineMedium">
+        <item name="android:textSize">28sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <style name="TextAppearance.NewPipe.HeadlineSmall">
+        <item name="android:textSize">24sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <!-- Title Styles -->
+    <style name="TextAppearance.NewPipe.TitleLarge">
+        <item name="android:textSize">22sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <style name="TextAppearance.NewPipe.TitleMedium">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <style name="TextAppearance.NewPipe.TitleSmall">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <!-- Body Styles -->
+    <style name="TextAppearance.NewPipe.BodyLarge">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <style name="TextAppearance.NewPipe.BodyMedium">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/text_secondary</item>
+    </style>
+
+    <style name="TextAppearance.NewPipe.BodySmall">
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/text_secondary</item>
+    </style>
+
+    <!-- Label Styles -->
+    <style name="TextAppearance.NewPipe.LabelLarge">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <style name="TextAppearance.NewPipe.LabelMedium">
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="android:textColor">@color/text_secondary</item>
+    </style>
+
+    <style name="TextAppearance.NewPipe.LabelSmall">
+        <item name="android:textSize">11sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="android:textColor">@color/text_tertiary</item>
+    </style>
+
+    <!-- ============================================ -->
+    <!-- Component Styles                            -->
+    <!-- ============================================ -->
+
+    <!-- Modern Card Style -->
+    <style name="Widget.NewPipe.Card" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">@dimen/radius_lg</item>
+        <item name="cardElevation">@dimen/elevation_none</item>
+        <item name="strokeWidth">@dimen/glass_border_width</item>
+        <item name="strokeColor">@color/border_color</item>
+        <item name="cardBackgroundColor">@color/surface_color</item>
+    </style>
+
+    <!-- Glass Button Style -->
+    <style name="Widget.NewPipe.Button.Glass" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="backgroundTint">@color/glass_background</item>
+        <item name="strokeColor">@color/border_color</item>
+        <item name="strokeWidth">@dimen/glass_border_width</item>
+        <item name="cornerRadius">@dimen/radius_md</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <!-- Accent Button Style -->
+    <style name="Widget.NewPipe.Button.Accent" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/neon_blue</item>
+        <item name="cornerRadius">@dimen/radius_md</item>
+        <item name="android:textColor">@color/window_background</item>
+    </style>
+
+    <!-- ============================================ -->
+    <!-- Shape Appearances                           -->
+    <!-- ============================================ -->
+
+    <!-- Thumbnail with rounded corners -->
+    <style name="ShapeAppearance.NewPipe.Thumbnail" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/radius_md</item>
+    </style>
+
+    <!-- Card Thumbnail (top corners only) -->
+    <style name="ShapeAppearance.NewPipe.CardThumbnail" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">@dimen/radius_lg</item>
+        <item name="cornerSizeTopRight">@dimen/radius_lg</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+
+    <!-- Fully rounded (for avatars) -->
+    <style name="ShapeAppearance.NewPipe.Avatar" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <!-- ============================================ -->
+    <!-- Tab Layout Style                            -->
+    <!-- ============================================ -->
+
+    <style name="Widget.NewPipe.TabLayout" parent="Widget.MaterialComponents.TabLayout">
+        <item name="tabBackground">@android:color/transparent</item>
+        <item name="tabIndicatorColor">@color/neon_blue</item>
+        <item name="tabIndicatorHeight">3dp</item>
+        <item name="tabIndicatorFullWidth">false</item>
+        <item name="tabSelectedTextColor">@color/text_primary</item>
+        <item name="tabTextColor">@color/text_secondary</item>
+        <item name="tabIconTint">@color/text_secondary</item>
+        <item name="tabRippleColor">@color/light_ripple_color</item>
+    </style>
+
+    <!-- ============================================ -->
+    <!-- Bottom Sheet Style                          -->
+    <!-- ============================================ -->
+
+    <style name="Widget.NewPipe.BottomSheet" parent="Widget.MaterialComponents.BottomSheet">
+        <item name="backgroundTint">@color/surface_color</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.NewPipe.BottomSheet</item>
+    </style>
+
+    <style name="ShapeAppearance.NewPipe.BottomSheet" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">@dimen/radius_xl</item>
+        <item name="cornerSizeTopRight">@dimen/radius_xl</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+
 </resources>
