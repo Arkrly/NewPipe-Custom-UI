@@ -139,3 +139,11 @@ google-services.json
 # Gemini/Claude AI artifacts (optional)
 # ============================================
 .agent/
+
+# ============================================
+# Development documentation (internal only)
+# ============================================
+DEV_SETUP.md
+Instruction.md
+UI_MODERNIZATION_PLAN.md
+

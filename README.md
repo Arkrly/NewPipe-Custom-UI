@@ -26,6 +26,63 @@
 <p align="center"><a href="https://newpipe.net">Website</a> &bull; <a href="https://newpipe.net/blog/">Blog</a> &bull; <a href="https://newpipe.net/FAQ/">FAQ</a> &bull; <a href="https://newpipe.net/press/">Press</a></p>
 <hr>
 
+## 🎨 Custom UI - GitHub Nightlight Theme
+
+This fork features a completely redesigned UI with the **GitHub Nightlight & Glassmorphism** theme, providing a modern and premium visual experience.
+
+### Design System
+
+| Element | Description |
+|---------|-------------|
+| **Color Palette** | GitHub Dark-inspired deep slate backgrounds with neon blue accents |
+| **Glassmorphism** | Semi-transparent panels with subtle borders and blur effects |
+| **Typography** | Material Design 3 text hierarchy with proper contrast |
+| **Corners** | Modern 16dp rounded cards and 24dp dialogs |
+| **Animations** | Smooth fade, scale, and slide transitions |
+
+### Color Palette
+
+| Role | Color | Hex |
+|------|-------|-----|
+| Window Background | Deep Slate | `#0d1117` |
+| Surface (Cards) | Dark Blue-Gray | `#161b22` |
+| Primary Accent | Neon Blue | `#58a6ff` |
+| Secondary Accent | Soft Purple | `#bc8cff` |
+| Success | Neon Green | `#3fb950` |
+| Warning | Neon Orange | `#d29922` |
+| Error | Neon Red | `#f85149` |
+| Primary Text | Off-White | `#c9d1d9` |
+| Secondary Text | Muted Gray | `#8b949e` |
+
+### Updated Components
+
+- ✅ Video list items (card, grid, mini views)
+- ✅ Channel items (list, grid, mini views)
+- ✅ Playlist items with glass overlays
+- ✅ Comments with circular avatars
+- ✅ Play queue with modern styling
+- ✅ Toolbar with glass background
+- ✅ Tab navigation with neon indicators
+- ✅ Search suggestions
+- ✅ Error and empty states
+- ✅ Dialog styling
+- ✅ Drawer header with gradient
+
+### Building
+
+```bash
+# Clone the repository
+git clone https://github.com/Arkrly/NewPipe-Custom-UI.git
+cd NewPipe-Custom-UI
+
+# Build debug APK
+./gradlew assembleDebug
+
+# APK will be at: app/build/outputs/apk/debug/app-debug.apk
+```
+
+<hr>
+
 *Read this document in other languages: [Deutsch](doc/README.de.md), [English](README.md), [Español](doc/README.es.md), [Français](doc/README.fr.md), [हिन्दी](doc/README.hi.md), [Italiano](doc/README.it.md), [한국어](doc/README.ko.md), [Português Brasil](doc/README.pt_BR.md), [Polski](doc/README.pl.md), [ਪੰਜਾਬੀ ](doc/README.pa.md), [日本語](doc/README.ja.md), [Română](doc/README.ro.md), [Soomaali](doc/README.so.md), [Türkçe](doc/README.tr.md), [正體中文](doc/README.zh_TW.md), [অসমীয়া](doc/README.asm.md), [Српски](doc/README.sr.md), [العربية](README.ar.md)* 
 
 > [!warning]
