@@ -1,66 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Playlist Grid Item - Modern Style -->
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Playlist Grid Item - Slim Style -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/itemRoot"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/spacing_xs"
+    android:background="?attr/selectableItemBackground"
     android:clickable="true"
     android:focusable="true"
-    app:cardBackgroundColor="@color/surface_color"
-    app:cardCornerRadius="@dimen/radius_md"
-    app:cardElevation="@dimen/elevation_none"
-    app:strokeColor="@color/border_color"
-    app:strokeWidth="@dimen/glass_border_width"
-    app:rippleColor="@color/light_ripple_color">
+    android:padding="6dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <!-- Thumbnail Container -->
+        <!-- Thumbnail with overlay -->
         <FrameLayout
-            android:id="@+id/thumbnailContainer"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintDimensionRatio="16:9"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/itemThumbnailView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="90dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/placeholder_thumbnail_playlist"
-                app:shapeAppearanceOverlay="@style/ShapeAppearance.NewPipe.CardThumbnail" />
+                android:background="@color/placeholder_background"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.NewPipe.Thumbnail"
+                tools:src="@drawable/placeholder_thumbnail_video" />
 
-            <!-- Stream Count Badge -->
+            <!-- Stream count overlay -->
             <LinearLayout
-                android:layout_width="40dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="end"
-                android:background="@drawable/bg_glass_panel"
+                android:background="#CC0d1117"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingHorizontal="6dp">
 
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
                     android:src="@drawable/ic_playlist_play"
-                    app:tint="@color/text_primary"
+                    app:tint="#c9d1d9"
                     tools:ignore="ContentDescription" />
 
                 <org.schabi.newpipe.views.NewPipeTextView
                     android:id="@+id/itemStreamCountView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:textColor="@color/text_primary"
-                    android:textSize="11sp"
+                    android:textColor="#c9d1d9"
+                    android:textSize="10sp"
                     android:fontFamily="sans-serif-medium"
                     tools:text="25" />
 
@@ -71,37 +63,28 @@
         <!-- Title -->
         <org.schabi.newpipe.views.NewPipeTextView
             android:id="@+id/itemTitleView"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/spacing_sm"
-            android:layout_marginTop="@dimen/spacing_sm"
+            android:layout_marginTop="6dp"
             android:ellipsize="end"
             android:maxLines="2"
-            android:textColor="@color/text_primary"
+            android:textColor="#c9d1d9"
             android:textSize="13sp"
             android:fontFamily="sans-serif-medium"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/thumbnailContainer"
-            tools:text="Playlist Title" />
+            tools:text="Playlist" />
 
         <!-- Uploader -->
         <org.schabi.newpipe.views.NewPipeTextView
             android:id="@+id/itemUploaderView"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/spacing_sm"
             android:layout_marginTop="2dp"
-            android:layout_marginBottom="@dimen/spacing_sm"
-            android:lines="1"
-            android:textColor="@color/text_secondary"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="#8b949e"
             android:textSize="11sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/itemTitleView"
-            tools:text="Uploader" />
+            tools:text="Channel" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
-</com.google.android.material.card.MaterialCardView>
+</FrameLayout>

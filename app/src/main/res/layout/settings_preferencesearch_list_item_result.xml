@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Settings Preference Search Result - Modern Style -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?android:attr/selectableItemBackground"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:paddingTop="12dp"
-    android:paddingBottom="12dp">
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="?android:attr/editTextColor"
+        android:textColor="@color/text_primary"
         android:textSize="16sp"
+        android:fontFamily="sans-serif-medium"
         tools:text="Title" />
 
     <TextView
         android:id="@+id/summary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="?android:attr/editTextColor"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/text_secondary"
         android:textSize="14sp"
         tools:text="Summary" />
 
@@ -29,8 +30,8 @@
         android:id="@+id/breadcrumbs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:alpha="0.6"
-        android:textColor="?android:attr/editTextColor"
-        android:textSize="14sp"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/text_tertiary"
+        android:textSize="12sp"
         tools:text="Breadcrumb" />
 </LinearLayout>

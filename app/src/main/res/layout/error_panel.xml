@@ -50,38 +50,47 @@
         tools:visibility="visible" />
 
     <!-- Action Button (Accent) -->
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:id="@+id/error_action_button"
-        style="@style/Widget.NewPipe.Button.Accent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_md"
+        android:background="@drawable/bg_button_accent"
+        android:paddingHorizontal="@dimen/spacing_lg"
+        android:paddingVertical="@dimen/spacing_sm"
         android:text="@string/error_snackbar_action"
         android:textAllCaps="true"
+        android:textColor="@color/window_background"
         android:visibility="gone"
         tools:visibility="visible" />
 
     <!-- Retry Button (Glass) -->
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:id="@+id/error_retry_button"
-        style="@style/Widget.NewPipe.Button.Glass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_sm"
+        android:background="@drawable/bg_button_glass"
+        android:paddingHorizontal="@dimen/spacing_lg"
+        android:paddingVertical="@dimen/spacing_sm"
         android:text="@string/retry"
         android:textAllCaps="true"
+        android:textColor="@color/text_primary"
         android:visibility="gone"
         tools:visibility="visible" />
 
     <!-- Open in Browser Button (Glass) -->
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:id="@+id/error_open_in_browser"
-        style="@style/Widget.NewPipe.Button.Glass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_xs"
+        android:background="@drawable/bg_button_glass"
+        android:paddingHorizontal="@dimen/spacing_lg"
+        android:paddingVertical="@dimen/spacing_sm"
         android:text="@string/open_in_browser"
         android:textAllCaps="true"
+        android:textColor="@color/text_primary"
         android:visibility="gone"
         tools:visibility="visible" />
 

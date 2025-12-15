@@ -1,75 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Channel Grid Item - Modern Style -->
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Channel Grid Item - Slim Style -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/itemRoot"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/spacing_xs"
+    android:background="?attr/selectableItemBackground"
     android:clickable="true"
     android:focusable="true"
-    app:cardBackgroundColor="@color/surface_color"
-    app:cardCornerRadius="@dimen/radius_lg"
-    app:cardElevation="@dimen/elevation_none"
-    app:strokeColor="@color/border_color"
-    app:strokeWidth="@dimen/glass_border_width"
-    app:rippleColor="@color/light_ripple_color">
+    android:padding="8dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:padding="@dimen/spacing_md">
+        android:orientation="vertical">
 
-        <!-- Circular Avatar -->
+        <!-- Avatar -->
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/itemThumbnailView"
             android:layout_width="72dp"
             android:layout_height="72dp"
-            android:contentDescription="@string/detail_uploader_thumbnail_view_description"
-            android:src="@drawable/placeholder_person"
-            app:shapeAppearance="@style/ShapeAppearance.NewPipe.Avatar" />
+            android:scaleType="centerCrop"
+            android:background="@color/placeholder_background"
+            app:shapeAppearance="@style/ShapeAppearance.NewPipe.Avatar"
+            tools:src="@drawable/placeholder_thumbnail_video" />
 
         <!-- Channel Name -->
-        <TextView
-            android:id="@+id/itemTitleView"
-            android:layout_width="wrap_content"
+        <org.schabi.newpipe.views.NewPipeTextView
+            android:id="@+id/itemChannelTitleView"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_sm"
+            android:layout_marginTop="8dp"
             android:ellipsize="end"
             android:gravity="center"
-            android:lines="1"
-            android:textColor="@color/text_primary"
-            android:textSize="14sp"
+            android:maxLines="2"
+            android:textColor="#c9d1d9"
+            android:textSize="13sp"
             android:fontFamily="sans-serif-medium"
-            tools:text="Channel Name" />
+            tools:text="Channel" />
 
-        <!-- Subscriber Count -->
-        <TextView
-            android:id="@+id/itemAdditionalDetails"
-            android:layout_width="wrap_content"
+        <!-- Subscribers -->
+        <org.schabi.newpipe.views.NewPipeTextView
+            android:id="@+id/itemChannelDescriptionView"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
+            android:ellipsize="end"
             android:gravity="center"
-            android:lines="1"
-            android:textColor="@color/text_secondary"
+            android:maxLines="1"
+            android:textColor="#8b949e"
             android:textSize="11sp"
-            tools:text="10M subscribers" />
-
-        <!-- Description -->
-        <TextView
-            android:id="@+id/itemChannelDescriptionView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_xs"
-            android:gravity="center"
-            android:maxLines="2"
-            android:textColor="@color/text_tertiary"
-            android:textSize="11sp"
-            tools:text="@tools:sample/lorem/random" />
+            tools:text="1M subs" />
 
     </LinearLayout>
 
-</com.google.android.material.card.MaterialCardView>
+</FrameLayout>

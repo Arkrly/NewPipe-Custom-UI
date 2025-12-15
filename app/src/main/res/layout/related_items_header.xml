@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Related Items Header - Modern Style -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?attr/selectableItemBackground">
+    android:background="?attr/selectableItemBackground"
+    android:paddingVertical="8dp">
 
     <org.schabi.newpipe.views.NewPipeTextView
         android:layout_width="0dp"
@@ -11,8 +13,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:text="@string/exo_controls_next_description"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textSize="13sp"
+        android:textColor="@color/text_primary"
+        android:textSize="14sp"
+        android:fontFamily="sans-serif-medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/autoplay_switch"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:text="@string/auto_queue_toggle"
-        android:textColor="@android:color/tab_indicator_text"
+        android:textColor="@color/text_secondary"
         android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

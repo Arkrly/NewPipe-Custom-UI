@@ -1,86 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Channel List Item - Modern Style -->
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Channel List Item - Slim Style -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/itemRoot"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="@dimen/spacing_sm"
-    android:layout_marginVertical="@dimen/spacing_xs"
+    android:background="?attr/selectableItemBackground"
     android:clickable="true"
     android:focusable="true"
-    app:cardBackgroundColor="@color/surface_color"
-    app:cardCornerRadius="@dimen/radius_lg"
-    app:cardElevation="@dimen/elevation_none"
-    app:strokeColor="@color/border_color"
-    app:strokeWidth="@dimen/glass_border_width"
-    app:rippleColor="@color/light_ripple_color">
+    android:paddingHorizontal="12dp"
+    android:paddingVertical="10dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/spacing_sm">
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
-        <!-- Circular Avatar -->
+        <!-- Avatar -->
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/itemThumbnailView"
             android:layout_width="56dp"
             android:layout_height="56dp"
-            android:src="@drawable/placeholder_person"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearance="@style/ShapeAppearance.NewPipe.Avatar" />
+            android:scaleType="centerCrop"
+            android:background="@color/placeholder_background"
+            app:shapeAppearance="@style/ShapeAppearance.NewPipe.Avatar"
+            tools:src="@drawable/placeholder_thumbnail_video" />
 
-        <!-- Channel Title -->
-        <TextView
-            android:id="@+id/itemTitleView"
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/spacing_sm"
-            android:ellipsize="end"
-            android:lines="1"
-            android:textColor="@color/text_primary"
-            android:textSize="15sp"
-            android:fontFamily="sans-serif-medium"
-            app:layout_constraintBottom_toTopOf="@+id/itemChannelDescriptionView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/itemThumbnailView"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed"
-            tools:text="Channel Title" />
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-        <!-- Channel Description -->
-        <TextView
-            android:id="@+id/itemChannelDescriptionView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:textColor="@color/text_secondary"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/itemAdditionalDetails"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/itemTitleView"
-            app:layout_constraintTop_toBottomOf="@+id/itemTitleView"
-            tools:text="Channel description goes here..." />
+            <!-- Channel Name -->
+            <org.schabi.newpipe.views.NewPipeTextView
+                android:id="@+id/itemChannelTitleView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="#c9d1d9"
+                android:textSize="15sp"
+                android:fontFamily="sans-serif-medium"
+                tools:text="Channel Name" />
 
-        <!-- Subscriber Count -->
-        <TextView
-            android:id="@+id/itemAdditionalDetails"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:lines="1"
-            android:textColor="@color/text_tertiary"
-            android:textSize="11sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/itemTitleView"
-            app:layout_constraintTop_toBottomOf="@+id/itemChannelDescriptionView"
-            tools:text="10M subscribers • 1000 videos" />
+            <!-- Subscriber Count -->
+            <org.schabi.newpipe.views.NewPipeTextView
+                android:id="@+id/itemChannelDescriptionView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="#8b949e"
+                android:textSize="12sp"
+                tools:text="1.2M subscribers" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
-</com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+
+</FrameLayout>

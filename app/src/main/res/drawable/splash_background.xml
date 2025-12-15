@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Splash Screen Background - GitHub Nightlight -->
+<!-- Splash Screen Background - Safe Version -->
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <!-- Deep slate background -->
     <item android:drawable="@color/window_background"/>
-
-    <!-- Centered logo -->
-    <item>
-        <bitmap
-            android:src="@drawable/ic_newpipe_triangle_white"
-            android:gravity="center_vertical|center_horizontal" />
-    </item>
-
 </layer-list>
