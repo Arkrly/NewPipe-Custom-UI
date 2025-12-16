@@ -29,7 +29,7 @@
 
         <!-- Channel Name -->
         <org.schabi.newpipe.views.NewPipeTextView
-            android:id="@+id/itemChannelTitleView"
+            android:id="@+id/itemTitleView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -43,7 +43,7 @@
 
         <!-- Subscribers -->
         <org.schabi.newpipe.views.NewPipeTextView
-            android:id="@+id/itemChannelDescriptionView"
+            android:id="@+id/itemAdditionalDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"

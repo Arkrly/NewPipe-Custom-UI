@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.schabi.newpipe.R;
 import org.schabi.newpipe.error.ErrorUtil;
-import org.schabi.newpipe.extractor.NewPipe;
 import org.schabi.newpipe.extractor.StreamingService;
 import org.schabi.newpipe.util.KioskTranslator;
 import org.schabi.newpipe.util.ServiceHelper;
@@ -37,7 +36,7 @@ import java.util.Vector;
  * <p>
  * NewPipe is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  * </p>
  * <p>
@@ -55,9 +54,11 @@ public class SelectKioskFragment extends DialogFragment {
         onSelectedListener = listener;
     }
 
-    /*//////////////////////////////////////////////////////////////////////////
-    // Init
-    //////////////////////////////////////////////////////////////////////////*/
+    /*
+     * //////////////////////////////////////////////////////////////////////////
+     * // Init
+     * //////////////////////////////////////////////////////////////////////////
+     */
 
     @Override
     public void onCreate(@Nullable final Bundle savedInstanceState) {
@@ -67,7 +68,7 @@ public class SelectKioskFragment extends DialogFragment {
 
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
-                             final Bundle savedInstanceState) {
+            final Bundle savedInstanceState) {
         final View v = inflater.inflate(R.layout.select_kiosk_fragment, container, false);
         final RecyclerView recyclerView = v.findViewById(R.id.items_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -81,9 +82,11 @@ public class SelectKioskFragment extends DialogFragment {
         return v;
     }
 
-   /*//////////////////////////////////////////////////////////////////////////
-    // Handle actions
-    //////////////////////////////////////////////////////////////////////////*/
+    /*
+     * //////////////////////////////////////////////////////////////////////////
+     * // Handle actions
+     * //////////////////////////////////////////////////////////////////////////
+     */
 
     private void clickedItem(final SelectKioskAdapter.Entry entry) {
         if (onSelectedListener != null) {
@@ -92,9 +95,11 @@ public class SelectKioskFragment extends DialogFragment {
         dismiss();
     }
 
-    /*//////////////////////////////////////////////////////////////////////////
-    // Interfaces
-    //////////////////////////////////////////////////////////////////////////*/
+    /*
+     * //////////////////////////////////////////////////////////////////////////
+     * // Interfaces
+     * //////////////////////////////////////////////////////////////////////////
+     */
 
     public interface OnSelectedListener {
         void onKioskSelected(int serviceId, String kioskId, String kioskName);
@@ -105,7 +110,8 @@ public class SelectKioskFragment extends DialogFragment {
         private final List<Entry> kioskList = new Vector<>();
 
         SelectKioskAdapter() throws Exception {
-            for (final StreamingService service : NewPipe.getServices()) {
+            // Only show kiosks from enabled services
+            for (final StreamingService service : ServiceHelper.getEnabledServices()) {
                 for (final String kioskId : service.getKioskList().getAvailableKiosks()) {
                     final String name = String.format(getString(R.string.service_kiosk_string),
                             service.getServiceInfo().getName(),

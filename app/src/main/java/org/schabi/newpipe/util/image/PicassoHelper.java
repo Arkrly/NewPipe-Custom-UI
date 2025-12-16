@@ -46,19 +46,29 @@ public final class PicassoHelper {
     @SuppressLint("StaticFieldLeak")
     private static Picasso picassoInstance;
 
-
     public static void init(final Context context) {
-        picassoCache = new LruCache(10 * 1024 * 1024);
+        // Increased memory cache for better performance (25MB)
+        // This reduces network requests and improves scrolling smoothness
+        picassoCache = new LruCache(25 * 1024 * 1024);
+
+        // Optimized OkHttp client with connection pooling and larger disk cache
         picassoDownloaderClient = new OkHttpClient.Builder()
+                // Increased disk cache to 100MB for better offline performance
                 .cache(new okhttp3.Cache(new File(context.getExternalCacheDir(), "picasso"),
-                        50L * 1024L * 1024L))
-                // this should already be the default timeout in OkHttp3, but just to be sure...
-                .callTimeout(15, TimeUnit.SECONDS)
+                        100L * 1024L * 1024L))
+                // Optimized timeouts for better UX
+                .connectTimeout(10, TimeUnit.SECONDS)
+                .readTimeout(15, TimeUnit.SECONDS)
+                .writeTimeout(15, TimeUnit.SECONDS)
+                .callTimeout(30, TimeUnit.SECONDS)
+                // Enable connection pooling for better performance
+                .connectionPool(new okhttp3.ConnectionPool(5, 30, TimeUnit.SECONDS))
                 .build();
 
         picassoInstance = new Picasso.Builder(context)
                 .memoryCache(picassoCache) // memory cache
                 .downloader(new OkHttp3Downloader(picassoDownloaderClient)) // disk cache
+                // RGB_565 uses less memory than ARGB_8888 (2 bytes vs 4 bytes per pixel)
                 .defaultBitmapConfig(Bitmap.Config.RGB_565)
                 .build();
     }
@@ -90,7 +100,6 @@ public final class PicassoHelper {
     public static void setIndicatorsEnabled(final boolean enabled) {
         picassoInstance.setIndicatorsEnabled(enabled); // useful for debugging
     }
-
 
     public static RequestCreator loadAvatar(@NonNull final List<Image> images) {
         return loadImageDefault(images, R.drawable.placeholder_person);
@@ -133,9 +142,8 @@ public final class PicassoHelper {
         return loadImageDefault(url, R.drawable.ic_newpipe_triangle_white);
     }
 
-
     public static RequestCreator loadScaledDownThumbnail(final Context context,
-                                                         @NonNull final List<Image> images) {
+            @NonNull final List<Image> images) {
         // scale down the notification thumbnail for performance
         return PicassoHelper.loadThumbnail(images)
                 .transform(new Transformation() {
@@ -189,22 +197,23 @@ public final class PicassoHelper {
         return picassoCache.get(imageUrl + "\n");
     }
 
-
     private static RequestCreator loadImageDefault(@NonNull final List<Image> images,
-                                                   @DrawableRes final int placeholderResId) {
+            @DrawableRes final int placeholderResId) {
         return loadImageDefault(choosePreferredImage(images), placeholderResId);
     }
 
     private static RequestCreator loadImageDefault(@Nullable final String url,
-                                                   @DrawableRes final int placeholderResId) {
+            @DrawableRes final int placeholderResId) {
         return loadImageDefault(url, placeholderResId, true);
     }
 
     private static RequestCreator loadImageDefault(@Nullable final String url,
-                                                   @DrawableRes final int placeholderResId,
-                                                   final boolean showPlaceholderWhileLoading) {
-        // if the URL was chosen with `choosePreferredImage` it will be null, but check again
-        // `shouldLoadImages` in case the URL was chosen with `imageListToDbUrl` (which is the case
+            @DrawableRes final int placeholderResId,
+            final boolean showPlaceholderWhileLoading) {
+        // if the URL was chosen with `choosePreferredImage` it will be null, but check
+        // again
+        // `shouldLoadImages` in case the URL was chosen with `imageListToDbUrl` (which
+        // is the case
         // for URLs stored in the database)
         if (isNullOrEmpty(url) || !ImageStrategy.shouldLoadImages()) {
             return picassoInstance

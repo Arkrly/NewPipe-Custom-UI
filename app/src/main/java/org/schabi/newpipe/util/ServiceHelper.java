@@ -28,7 +28,40 @@ import java.util.concurrent.TimeUnit;
 public final class ServiceHelper {
     private static final StreamingService DEFAULT_FALLBACK_SERVICE = ServiceList.YouTube;
 
-    private ServiceHelper() { }
+    /**
+     * IDs of services that should be shown in the app.
+     * Excluded: media.ccc.de (2), PeerTube/FramaTube (3), Bandcamp (4)
+     */
+    private static final int[] ENABLED_SERVICES = {0, 1}; // YouTube, SoundCloud
+
+    private ServiceHelper() {
+    }
+
+    /**
+     * Check if a service is enabled (should be shown in the UI).
+     *
+     * @param serviceId the service ID to check
+     * @return true if the service is enabled, false otherwise
+     */
+    public static boolean isServiceEnabled(final int serviceId) {
+        for (final int id : ENABLED_SERVICES) {
+            if (id == serviceId) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Get list of enabled services.
+     *
+     * @return list of streaming services that are enabled
+     */
+    public static java.util.List<StreamingService> getEnabledServices() {
+        return ServiceList.all().stream()
+                .filter(s -> isServiceEnabled(s.getServiceId()))
+                .collect(java.util.stream.Collectors.toList());
+    }
 
     @DrawableRes
     public static int getIcon(final int serviceId) {
@@ -81,10 +114,12 @@ public final class ServiceHelper {
     }
 
     /**
-     * Get a resource string with instructions for importing subscriptions for each service.
+     * Get a resource string with instructions for importing subscriptions for each
+     * service.
      *
      * @param serviceId service to get the instructions for
-     * @return the string resource containing the instructions or -1 if the service don't support it
+     * @return the string resource containing the instructions or -1 if the service
+     *         don't support it
      */
     @StringRes
     public static int getImportInstructions(final int serviceId) {
@@ -99,7 +134,8 @@ public final class ServiceHelper {
     }
 
     /**
-     * For services that support importing from a channel url, return a hint that will
+     * For services that support importing from a channel url, return a hint that
+     * will
      * be used in the EditText that the user will type in his channel url.
      *
      * @param serviceId service to get the hint for
@@ -147,7 +183,8 @@ public final class ServiceHelper {
     /**
      * @param serviceId the id of the service
      * @return the service corresponding to the provided id
-     * @throws java.util.NoSuchElementException if there is no service with the provided id
+     * @throws java.util.NoSuchElementException if there is no service with the
+     *                                          provided id
      */
     @NonNull
     public static StreamingService getServiceById(final int serviceId) {
@@ -169,9 +206,9 @@ public final class ServiceHelper {
     }
 
     private static void setSelectedServicePreferences(final Context context,
-                                                      final String serviceName) {
-        PreferenceManager.getDefaultSharedPreferences(context).edit().
-                putString(context.getString(R.string.current_service_key), serviceName).apply();
+            final String serviceName) {
+        PreferenceManager.getDefaultSharedPreferences(context).edit()
+                .putString(context.getString(R.string.current_service_key), serviceName).apply();
     }
 
     public static long getCacheExpirationMillis(final int serviceId) {

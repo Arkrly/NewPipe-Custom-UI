@@ -130,9 +130,11 @@ public class MainActivity extends AppCompatActivity {
 
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor sharedPrefEditor;
-    /*//////////////////////////////////////////////////////////////////////////
-    // Activity's LifeCycle
-    //////////////////////////////////////////////////////////////////////////*/
+    /*
+     * //////////////////////////////////////////////////////////////////////////
+     * // Activity's LifeCycle
+     * //////////////////////////////////////////////////////////////////////////
+     */
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -186,7 +188,8 @@ public class MainActivity extends AppCompatActivity {
 
         if (PermissionHelper.checkPostNotificationsPermission(this,
                 PermissionHelper.POST_NOTIFICATIONS_REQUEST_CODE)) {
-            // Schedule worker for checking for new streams and creating corresponding notifications
+            // Schedule worker for checking for new streams and creating corresponding
+            // notifications
             // if this is enabled by the user.
             NotificationWorker.initialize(this);
         }
@@ -207,7 +210,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (sharedPreferences.getBoolean(app.getString(R.string.update_app_key), false)
                 && sharedPreferences
-                .getBoolean(app.getString(R.string.update_check_consent_key), false)) {
+                        .getBoolean(app.getString(R.string.update_check_consent_key), false)) {
             // Start the worker which is checking all conditions
             // and eventually searching for a new version.
             NewVersionWorker.enqueueNewVersionCheckingWork(app, false);
@@ -227,6 +230,7 @@ public class MainActivity extends AppCompatActivity {
         sharedPrefEditor.putBoolean(KEY_IS_IN_BACKGROUND, true).apply();
         Log.d(TAG, "App moved to background");
     }
+
     private void setupDrawer() throws ExtractionException {
         addDrawerMenuForCurrentService();
 
@@ -263,7 +267,7 @@ public class MainActivity extends AppCompatActivity {
      * @throws ExtractionException if the service didn't provide available kiosks
      */
     private void addDrawerMenuForCurrentService() throws ExtractionException {
-        //Tabs
+        // Tabs
         drawerLayoutBinding.navigation.getMenu()
                 .add(R.id.menu_tabs_group, ITEM_ID_SUBSCRIPTIONS, ORDER,
                         R.string.tab_subscriptions)
@@ -281,7 +285,7 @@ public class MainActivity extends AppCompatActivity {
                 .add(R.id.menu_tabs_group, ITEM_ID_HISTORY, ORDER, R.string.action_history)
                 .setIcon(R.drawable.ic_history);
 
-        //Kiosks
+        // Kiosks
         final int currentServiceId = ServiceHelper.getSelectedServiceId(this);
         final StreamingService service = NewPipe.getService(currentServiceId);
 
@@ -295,7 +299,7 @@ public class MainActivity extends AppCompatActivity {
             kioskMenuItemId++;
         }
 
-        //Settings and About
+        // Settings and About
         drawerLayoutBinding.navigation.getMenu()
                 .add(R.id.menu_options_about_group, ITEM_ID_SETTINGS, ORDER, R.string.settings)
                 .setIcon(R.drawable.ic_settings);
@@ -433,21 +437,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showServices() {
-        for (final StreamingService s : NewPipe.getServices()) {
+        // Only show enabled services (excludes media.ccc.de, PeerTube, Bandcamp)
+        for (final StreamingService s : ServiceHelper.getEnabledServices()) {
             final String title = s.getServiceInfo().getName();
 
             final MenuItem menuItem = drawerLayoutBinding.navigation.getMenu()
                     .add(R.id.menu_services_group, s.getServiceId(), ORDER, title)
                     .setIcon(ServiceHelper.getIcon(s.getServiceId()));
 
-            // peertube specifics
+            // peertube specifics - skipped since PeerTube is disabled
             if (s.getServiceId() == 3) {
                 enhancePeertubeMenu(menuItem);
             }
         }
-        drawerLayoutBinding.navigation.getMenu()
-                .getItem(ServiceHelper.getSelectedServiceId(this))
-                .setChecked(true);
+        // Find and check the currently selected service in the menu
+        final int selectedServiceId = ServiceHelper.getSelectedServiceId(this);
+        for (int i = 0; i < drawerLayoutBinding.navigation.getMenu().size(); i++) {
+            final MenuItem item = drawerLayoutBinding.navigation.getMenu().getItem(i);
+            if (item.getItemId() == selectedServiceId) {
+                item.setChecked(true);
+                break;
+            }
+        }
     }
 
     private void enhancePeertubeMenu(final MenuItem menuItem) {
@@ -472,7 +483,7 @@ public class MainActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(final AdapterView<?> parent, final View view,
-                                       final int position, final long id) {
+                    final int position, final long id) {
                 final PeertubeInstance newInstance = instances.get(position);
                 if (newInstance.getUrl().equals(PeertubeHelper.getCurrentInstance().getUrl())) {
                     return;
@@ -523,8 +534,8 @@ public class MainActivity extends AppCompatActivity {
             drawerHeaderBinding.drawerHeaderServiceIcon.setImageResource(ServiceHelper
                     .getIcon(selectedServiceId));
 
-            drawerHeaderBinding.drawerHeaderServiceView.post(() -> drawerHeaderBinding
-                    .drawerHeaderServiceView.setSelected(true));
+            drawerHeaderBinding.drawerHeaderServiceView
+                    .post(() -> drawerHeaderBinding.drawerHeaderServiceView.setSelected(true));
             drawerHeaderBinding.drawerHeaderActionButton.setContentDescription(
                     getString(R.string.drawer_header_description) + selectedServiceName);
         } catch (final Exception e) {
@@ -600,13 +611,16 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        // In case bottomSheet is not visible on the screen or collapsed we can assume that the user
-        // interacts with a fragment inside fragment_holder so all back presses should be
+        // In case bottomSheet is not visible on the screen or collapsed we can assume
+        // that the user
+        // interacts with a fragment inside fragment_holder so all back presses should
+        // be
         // handled by it
         if (bottomSheetHiddenOrCollapsed()) {
             final FragmentManager fm = getSupportFragmentManager();
             final Fragment fragment = fm.findFragmentById(R.id.fragment_holder);
-            // If current fragment implements BackPressable (i.e. can/wanna handle back press)
+            // If current fragment implements BackPressable (i.e. can/wanna handle back
+            // press)
             // delegate the back press to it
             if (fragment instanceof BackPressable) {
                 if (((BackPressable) fragment).onBackPressed()) {
@@ -624,7 +638,8 @@ public class MainActivity extends AppCompatActivity {
         } else {
             final Fragment fragmentPlayer = getSupportFragmentManager()
                     .findFragmentById(R.id.fragment_player_holder);
-            // If current fragment implements BackPressable (i.e. can/wanna handle back press)
+            // If current fragment implements BackPressable (i.e. can/wanna handle back
+            // press)
             // delegate the back press to it
             if (fragmentPlayer instanceof BackPressable) {
                 if (!((BackPressable) fragmentPlayer).onBackPressed()) {
@@ -644,8 +659,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onRequestPermissionsResult(final int requestCode,
-                                           @NonNull final String[] permissions,
-                                           @NonNull final int[] grantResults) {
+            @NonNull final String[] permissions,
+            @NonNull final int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         for (final int i : grantResults) {
             if (i == PackageManager.PERMISSION_DENIED) {
@@ -671,6 +686,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Implement the following diagram behavior for the up button:
+     *
      * <pre>
      *              +---------------+
      *              |  Main Screen  +----+
@@ -708,9 +724,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    /*//////////////////////////////////////////////////////////////////////////
-    // Menu
-    //////////////////////////////////////////////////////////////////////////*/
+    /*
+     * //////////////////////////////////////////////////////////////////////////
+     * // Menu
+     * //////////////////////////////////////////////////////////////////////////
+     */
 
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
@@ -748,9 +766,11 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /*//////////////////////////////////////////////////////////////////////////
-    // Init
-    //////////////////////////////////////////////////////////////////////////*/
+    /*
+     * //////////////////////////////////////////////////////////////////////////
+     * // Init
+     * //////////////////////////////////////////////////////////////////////////
+     */
 
     private void initFragments() {
         if (DEBUG) {
@@ -758,7 +778,8 @@ public class MainActivity extends AppCompatActivity {
         }
         StateSaver.clearStateFiles();
         if (getIntent() != null && getIntent().hasExtra(Constants.KEY_LINK_TYPE)) {
-            // When user watch a video inside popup and then tries to open the video in main player
+            // When user watch a video inside popup and then tries to open the video in main
+            // player
             // while the app is closed he will see a blank fragment on place of kiosk.
             // Let's open it first
             if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
@@ -771,9 +792,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    /*//////////////////////////////////////////////////////////////////////////
-    // Utils
-    //////////////////////////////////////////////////////////////////////////*/
+    /*
+     * //////////////////////////////////////////////////////////////////////////
+     * // Utils
+     * //////////////////////////////////////////////////////////////////////////
+     */
 
     private void updateDrawerNavigation() {
         if (getSupportActionBar() == null) {
@@ -820,7 +843,7 @@ public class MainActivity extends AppCompatActivity {
                                 Player.PLAY_QUEUE_KEY);
                         final PlayQueue playQueue = intentCacheKey != null
                                 ? SerializedCache.getInstance()
-                                .take(intentCacheKey, PlayQueue.class)
+                                        .take(intentCacheKey, PlayQueue.class)
                                 : null;
 
                         final boolean switchingPlayers = intent.getBooleanExtra(
@@ -861,8 +884,10 @@ public class MainActivity extends AppCompatActivity {
         final Fragment fragmentPlayer = getSupportFragmentManager()
                 .findFragmentById(R.id.fragment_player_holder);
         if (fragmentPlayer == null) {
-            // We still don't have a fragment attached to the activity. It can happen when a user
-            // started popup or background players without opening a stream inside the fragment.
+            // We still don't have a fragment attached to the activity. It can happen when a
+            // user
+            // started popup or background players without opening a stream inside the
+            // fragment.
             // Adding it in a collapsed state (only mini player will be visible).
             NavigationHelper.showMiniPlayer(getSupportFragmentManager());
         }
@@ -900,7 +925,8 @@ public class MainActivity extends AppCompatActivity {
             ContextCompat.registerReceiver(this, broadcastReceiver, intentFilter,
                     ContextCompat.RECEIVER_EXPORTED);
 
-            // If the PlayerHolder is not bound yet, but the service is running, try to bind to it.
+            // If the PlayerHolder is not bound yet, but the service is running, try to bind
+            // to it.
             // Once the connection is established, the ACTION_PLAYER_STARTED will be sent.
             PlayerHolder.getInstance().tryBindIfNeeded(this);
         }
@@ -908,10 +934,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void openDetailFragmentFromCommentReplies(
             @NonNull final FragmentManager fm,
-            final boolean popBackStack
-    ) {
-        // obtain the name of the fragment under the replies fragment that's going to be popped
-        @Nullable final String fragmentUnderEntryName;
+            final boolean popBackStack) {
+        // obtain the name of the fragment under the replies fragment that's going to be
+        // popped
+        @Nullable
+        final String fragmentUnderEntryName;
         if (fm.getBackStackEntryCount() < 2) {
             fragmentUnderEntryName = null;
         } else {
@@ -920,17 +947,21 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // the root comment is the comment for which the user opened the replies page
-        @Nullable final CommentRepliesFragment repliesFragment =
-                (CommentRepliesFragment) fm.findFragmentByTag(CommentRepliesFragment.TAG);
-        @Nullable final CommentsInfoItem rootComment =
+        @Nullable
+        final CommentRepliesFragment repliesFragment = (CommentRepliesFragment) fm
+                .findFragmentByTag(CommentRepliesFragment.TAG);
+        @Nullable
+        final CommentsInfoItem rootComment =
                 repliesFragment == null ? null : repliesFragment.getCommentsInfoItem();
 
-        // sometimes this function pops the backstack, other times it's handled by the system
+        // sometimes this function pops the backstack, other times it's handled by the
+        // system
         if (popBackStack) {
             fm.popBackStackImmediate();
         }
 
-        // only expand the bottom sheet back if there are no more nested comment replies fragments
+        // only expand the bottom sheet back if there are no more nested comment replies
+        // fragments
         // stacked under the one that is currently being popped
         if (CommentRepliesFragment.TAG.equals(fragmentUnderEntryName)) {
             return;
@@ -943,11 +974,12 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        // scroll to the root comment once the bottom sheet expansion animation is finished
+        // scroll to the root comment once the bottom sheet expansion animation is
+        // finished
         behavior.addBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
             public void onStateChanged(@NonNull final View bottomSheet,
-                                       final int newState) {
+                    final int newState) {
                 if (newState == BottomSheetBehavior.STATE_EXPANDED) {
                     final Fragment detailFragment = fm.findFragmentById(
                             R.id.fragment_player_holder);
@@ -969,8 +1001,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private boolean bottomSheetHiddenOrCollapsed() {
-        final BottomSheetBehavior<FrameLayout> bottomSheetBehavior =
-                BottomSheetBehavior.from(mainBinding.fragmentPlayerHolder);
+        final BottomSheetBehavior<FrameLayout> bottomSheetBehavior = BottomSheetBehavior
+                .from(mainBinding.fragmentPlayerHolder);
 
         final int sheetState = bottomSheetBehavior.getState();
         return sheetState == BottomSheetBehavior.STATE_HIDDEN

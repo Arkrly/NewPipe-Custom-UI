@@ -4,11 +4,11 @@
     <!-- Service Colors - GitHub Nightlight Theme    -->
     <!-- ============================================ -->
 
-    <!-- YouTube - Updated to Neon Blue -->
-    <color name="light_youtube_primary_color">#58a6ff</color>
+    <!-- YouTube - Updated to Neon Purple -->
+    <color name="light_youtube_primary_color">#9333ea</color>
     <color name="light_youtube_accent_color">#c9d1d9</color>
 
-    <color name="dark_youtube_primary_color">#58a6ff</color>
+    <color name="dark_youtube_primary_color">#9333ea</color>
     <color name="dark_youtube_accent_color">#c9d1d9</color>
 
     <!-- SoundCloud - Updated to Neon Orange -->
@@ -18,25 +18,5 @@
     <color name="dark_soundcloud_primary_color">#d29922</color>
     <color name="dark_soundcloud_accent_color">#c9d1d9</color>
 
-    <!-- PeerTube - Updated to Neon Purple -->
-    <color name="light_peertube_primary_color">#bc8cff</color>
-    <color name="light_peertube_accent_color">#c9d1d9</color>
-
-    <color name="dark_peertube_primary_color">#bc8cff</color>
-    <color name="dark_peertube_accent_color">#c9d1d9</color>
-
-    <!-- media.ccc.de - Updated to secondary text -->
-    <color name="light_media_ccc_primary_color">#8b949e</color>
-    <color name="light_media_ccc_accent_color">#c9d1d9</color>
-
-    <color name="dark_media_ccc_primary_color">#8b949e</color>
-    <color name="dark_media_ccc_accent_color">#c9d1d9</color>
-
-    <!-- Bandcamp - Updated to Neon Green -->
-    <color name="light_bandcamp_primary_color">#3fb950</color>
-    <color name="light_bandcamp_accent_color">#c9d1d9</color>
-
-    <color name="dark_bandcamp_primary_color">#3fb950</color>
-    <color name="dark_bandcamp_accent_color">#c9d1d9</color>
 
 </resources>

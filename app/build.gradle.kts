@@ -27,8 +27,13 @@ kotlin {
     compilerOptions {
         // TODO: Drop annotation default target when it is stable
         freeCompilerArgs.addAll(
-            "-Xannotation-default-target=param-property"
+            "-Xannotation-default-target=param-property",
+            // Performance optimizations
+            "-opt-in=kotlin.RequiresOptIn",
+            "-Xjvm-default=all", // Use default methods in interfaces for better performance
         )
+        // Set JVM target for better code generation
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
     }
 }
 
@@ -38,7 +43,7 @@ android {
 
     defaultConfig {
         applicationId = "org.schabi.newpipe"
-        resValue("string", "app_name", "NewPipe")
+        resValue("string", "app_name", "MyTube")
         minSdk = 21
         targetSdk = 35
 
@@ -64,21 +69,32 @@ android {
             if (normalizedWorkingBranch.isEmpty() || workingBranch in defaultBranches) {
                 // default values when branch name could not be determined or is master or dev
                 applicationIdSuffix = ".debug"
-                resValue("string", "app_name", "NewPipe Debug")
+                resValue("string", "app_name", "NewPipe Ark Debug")
             } else {
                 applicationIdSuffix = ".debug.$normalizedWorkingBranch"
-                resValue("string", "app_name", "NewPipe $workingBranch")
+                resValue("string", "app_name", "NewPipe Ark $workingBranch")
             }
         }
 
         release {
             System.getProperty("packageSuffix")?.let { suffix ->
                 applicationIdSuffix = suffix
-                resValue("string", "app_name", "NewPipe $suffix")
+                resValue("string", "app_name", "NewPipe Ark $suffix")
             }
             isMinifyEnabled = true
             isShrinkResources = false // disabled to fix F-Droid"s reproducible build
-            proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+            // Use optimized proguard config for better runtime performance
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        }
+    }
+
+    // ABI splits for smaller APK sizes - each architecture gets its own optimized APK
+    splits {
+        abi {
+            isEnable = true
+            reset()
+            include("armeabi-v7a", "arm64-v8a", "x86", "x86_64")
+            isUniversalApk = true // Also build a universal APK
         }
     }
 
@@ -120,8 +136,19 @@ android {
             excludes += setOf(
                 "META-INF/README.md",
                 "META-INF/CHANGES",
-                "META-INF/COPYRIGHT" // "COPYRIGHT" belongs to RxJava...
+                "META-INF/COPYRIGHT", // "COPYRIGHT" belongs to RxJava...
+                // Exclude additional unnecessary files for smaller APK
+                "META-INF/NOTICE",
+                "META-INF/LICENSE",
+                "META-INF/DEPENDENCIES",
+                "META-INF/*.kotlin_module",
+                "kotlin/**",
+                "DebugProbesKt.bin"
             )
+        }
+        // Enable better compression
+        jniLibs {
+            useLegacyPackaging = false
         }
     }
 }

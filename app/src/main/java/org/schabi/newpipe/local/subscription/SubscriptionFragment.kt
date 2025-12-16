@@ -146,7 +146,7 @@ class SubscriptionFragment : BaseStateFragment<SubscriptionState>() {
         addMenuItemToSubmenu(importSubMenu, R.string.previous_export) { onImportPreviousSelected() }
             .setIcon(R.drawable.ic_backup)
 
-        for (service in ServiceList.all()) {
+        for (service in ServiceHelper.getEnabledServices()) {
             val subscriptionExtractor = service.subscriptionExtractor ?: continue
 
             val supportedSources = subscriptionExtractor.supportedSources
